@@ -93,19 +93,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\EntityController.cs" />
-    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Controllers\DatasourceController.cs" />
+    <Compile Include="Models\Datasource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\EntityRespository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="web.config" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
+    <Compile Include="Repositories\DatasourceRespository.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
