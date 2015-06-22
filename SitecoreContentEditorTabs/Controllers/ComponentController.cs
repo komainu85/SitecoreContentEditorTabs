@@ -6,15 +6,15 @@ using SitecoreContentEditorTabs.Repositories;
 namespace SitecoreContentEditorTabs.Controllers
 {
     [ServicesController]
-    public class DatasourceController : EntityService<Datasource>
+    public class ComponentController : EntityService<Component>
     {
-        public DatasourceController(IRepository<Datasource> repository)
+        public ComponentController(IRepository<Component> repository)
             : base(repository)
         {
         }
 
-        public DatasourceController()
-            : this(new DatasourceRespository())
+        public ComponentController()
+            : this(new ComponentRespository())
         {
         }
     }

@@ -4,34 +4,34 @@ using SitecoreContentEditorTabs.Models;
 
 namespace SitecoreContentEditorTabs.Repositories
 {
-    public class DatasourceRespository : Sitecore.Services.Core.IRepository<Datasource>
+    public class ComponentRespository : Sitecore.Services.Core.IRepository<Component>
     {
-        public IQueryable<Datasource> GetAll()
+        public IQueryable<Component> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Datasource FindById(string id)
+        public Component FindById(string id)
         {
             throw new NotImplementedException();
         }
 
-        public void Add(Datasource datasource)
+        public void Add(Component component)
         {
             throw new NotImplementedException();
         }
 
-        public bool Exists(Datasource datasource)
+        public bool Exists(Component component)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Datasource datasource)
+        public void Update(Component component)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Datasource datasource)
+        public void Delete(Component component)
         {
             throw new NotImplementedException();
         }
