@@ -90,6 +90,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SitecoreContentEditorTabs.js" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
