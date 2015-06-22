@@ -25,8 +25,8 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
             var datasource = this.DataSource;
 
             $.ajax({
-                url: "/sitecore/api/ssc/SitecoreContentEditorTabs-Controllers/Components/1/GetComponents",
-                type: "POST",
+                url: "/sitecore/api/ssc/SitecoreContentEditorTabs-Controllers/Component/1/GetComponents?itemId=3",
+                type: "GET",
                 contentType: 'application/json',
                 context: this,
                 success: function (data) {
