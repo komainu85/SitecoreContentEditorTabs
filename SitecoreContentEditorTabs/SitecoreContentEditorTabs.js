@@ -15,7 +15,7 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
 
         EntityServiceConfig: function () {
             var componentService = new entityService({
-                url: "/sitecore/api/ssc/MikeRobbins-Seshat-Controllers/Brochure"
+                url: "/sitecore/api/ssc/SitecoreContentEditorTabs-Controllers/Component"
             });
 
             return componentService;
@@ -25,7 +25,7 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
             var datasource = this.DataSource;
 
             $.ajax({
-                url: "/sitecore/api/ssc/SitecoreContentEditorTabs-Controllers/Component/3/GetComponents",
+                url: "/sitecore/api/ssc/SitecoreContentEditorTabs-Controllers/Component/" + this.GetQueryStringParameter("id") + "/GetComponents",
                 type: "GET",
                 contentType: 'application/json',
                 context: this,
@@ -33,6 +33,13 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
                     datasource.viewModel.items(data);
                 }
             });
+        },
+
+        GetQueryStringParameter: function (name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         },
     });
 
