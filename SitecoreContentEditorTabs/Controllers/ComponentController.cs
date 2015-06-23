@@ -38,12 +38,12 @@ namespace SitecoreContentEditorTabs.Controllers
         {
         }
 
-        public List<Component> GetComponents(string id)
+        public List<Component> GetComponents(string id, string database)
         {
             Assert.IsNotNullOrEmpty(id, "itemId");
 
-            var database = Sitecore.Data.Database.GetDatabase("master");
-            var item = database.GetItem(id);
+            var db = Sitecore.Data.Database.GetDatabase(database);
+            var item = db.GetItem(id);
             if (item == null || item.Fields["__renderings"] == null || string.IsNullOrEmpty(item.Fields["__renderings"].Value))
                 return null;
 
