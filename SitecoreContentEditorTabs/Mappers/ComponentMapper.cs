@@ -17,7 +17,8 @@ namespace SitecoreContentEditorTabs.Mappers
             var component = new Models.Component()
             {
                 Id = renderingReference.UniqueId,
-                ComponentName = renderingReference.RenderingItem.Name
+                ComponentName = renderingReference.RenderingItem.Name,
+                Placeholder = renderingReference.Placeholder
             };
 
             if (datasource != null)

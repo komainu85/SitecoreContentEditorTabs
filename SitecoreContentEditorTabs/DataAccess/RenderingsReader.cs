@@ -25,7 +25,7 @@ namespace SitecoreContentEditorTabs.DataAccess
 
             var test = (from reference in references
                         let renderingItem = reference.RenderingItem
-                        let datasource = database.GetItem(renderingItem.DataSource)
+                        let datasource = database.GetItem(reference.Settings.DataSource)
                         select _iComponentMapper.MapToComponent(reference, datasource)).ToList();
 
             return test;

@@ -14,5 +14,7 @@ namespace SitecoreContentEditorTabs.Models
         public Guid DatasourceId { get; set; }
         public string DatasourceLink { get; set; }
 
+        public string Placeholder { get; set; }
+
     }
 }
