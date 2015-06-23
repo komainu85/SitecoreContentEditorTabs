@@ -18,7 +18,8 @@ namespace SitecoreContentEditorTabs.Mappers
             {
                 Id = renderingReference.UniqueId,
                 ComponentName = renderingReference.RenderingItem.Name,
-                Placeholder = renderingReference.Placeholder
+                Placeholder = renderingReference.Placeholder,
+                IsPersonalised = renderingReference.Settings.Rules.Count> 0
             };
 
             if (datasource != null)

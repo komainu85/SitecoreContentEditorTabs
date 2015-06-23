@@ -10,11 +10,16 @@ namespace SitecoreContentEditorTabs.Models
         }
 
         public string ComponentName { get; set; }
+
         public string DatasourceName { get; set; }
+
         public Guid DatasourceId { get; set; }
+
         public string DatasourceLink { get; set; }
 
         public string Placeholder { get; set; }
+
+        public bool IsPersonalised { get; set; }
 
     }
 }
