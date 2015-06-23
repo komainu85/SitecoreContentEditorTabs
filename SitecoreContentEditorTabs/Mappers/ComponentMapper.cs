@@ -17,11 +17,15 @@ namespace SitecoreContentEditorTabs.Mappers
             var component = new Models.Component()
             {
                 Id = renderingReference.UniqueId,
-                ComponentName = renderingReference.RenderingItem.Name,
-                DatasourceId = datasource.ID.ToGuid(),
-                DatasourceLink = datasource.Paths.FullPath,
-                DatasourceName = datasource.Name,
+                ComponentName = renderingReference.RenderingItem.Name
             };
+
+            if (datasource != null)
+            {
+                component.DatasourceId = datasource.ID.ToGuid();
+                component.DatasourceLink = datasource.Paths.FullPath;
+                component.DatasourceName = datasource.Name;
+            }
 
             return component;
         }

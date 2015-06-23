@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Layouts;
 using Sitecore.Web.UI.HtmlControls;
@@ -16,11 +17,9 @@ namespace SitecoreContentEditorTabs.DataAccess
             _iComponentMapper = iComponentMapper;
         }
 
-        public List<Models.Component> GetComponents(Item item)
+        public List<Models.Component> GetComponents(Item item, Database database)
         {
             var layoutField = (Sitecore.Data.Fields.LayoutField)item.Fields["__renderings"];
-
-            var database = Sitecore.Data.Database.GetDatabase("master");
 
             var references = layoutField.GetReferences(new DeviceItem(database.GetItem("{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}")));
 

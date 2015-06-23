@@ -1,4 +1,7 @@
-﻿using SitecoreContentEditorTabs.Mappers;
+﻿using Sitecore.Services.Core;
+using SitecoreContentEditorTabs.DataAccess;
+using SitecoreContentEditorTabs.Mappers;
+using SitecoreContentEditorTabs.Models;
 
 namespace SitecoreContentEditorTabs.IoC
 {
@@ -7,6 +10,8 @@ namespace SitecoreContentEditorTabs.IoC
         public Registry()
         {
             For<Interfaces.IComponentMapper>().Use<ComponentMapper>();
+            For<Interfaces.IRenderingsReader>().Use<RenderingsReader>();
+            For(typeof(IRepository<Component>)).Use(typeof(SitecoreContentEditorTabs.Repositories.ComponentRespository));
         }
 
 
