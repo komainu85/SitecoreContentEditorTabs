@@ -7,21 +7,34 @@ using Sitecore.Diagnostics;
 using Sitecore.Layouts;
 using Sitecore.Services.Core;
 using Sitecore.Services.Infrastructure.Sitecore.Services;
+using SitecoreContentEditorTabs.DataAccess;
+using SitecoreContentEditorTabs.Interfaces;
+using SitecoreContentEditorTabs.IoC;
+using SitecoreContentEditorTabs.Mappers;
 using SitecoreContentEditorTabs.Models;
 using SitecoreContentEditorTabs.Repositories;
+using StructureMap;
 
 namespace SitecoreContentEditorTabs.Controllers
 {
     [ServicesController]
     public class ComponentController : EntityService<Component>
     {
+        public static Container Container
+        {
+            get
+            {
+                return new Container(new Registry());
+            }
+        }
+
         public ComponentController(IRepository<Component> repository)
-            : base(repository)
+                    : base(repository)
         {
         }
 
         public ComponentController()
-            : this(new ComponentRespository())
+            : this(Container.GetInstance<IRepository<Component>>())
         {
         }
 
@@ -34,25 +47,9 @@ namespace SitecoreContentEditorTabs.Controllers
             if (item == null || item.Fields["__renderings"] == null || string.IsNullOrEmpty(item.Fields["__renderings"].Value))
                 return null;
 
-            var layoutField = (Sitecore.Data.Fields.LayoutField) item.Fields["__renderings"];
+            var renderingsReader = Container.GetInstance<IRenderingsReader>();
 
-            var references = layoutField.GetReferences(new DeviceItem(null));
-
-            var test = (from reference in references
-                let renderingItem = reference.RenderingItem
-                let datasource = database.GetItem(renderingItem.DataSource)
-                select new Component()
-                {
-                    Id = "1",
-                    ComponentName = reference.RenderingItem.Name,
-                    DatasourceId = datasource.ID.ToGuid(),
-                    DatasourceLink = datasource.Paths.FullPath,
-                    DatasourceName = datasource.Name,
-                }).ToList();
-
-            test.Add(new Component() { Id = "3", ComponentName = "News", DatasourceId = new Guid(), DatasourceName = "The article" });
-
-            return test;
+            return renderingsReader.GetComponents(item);
         }
     }
 }
