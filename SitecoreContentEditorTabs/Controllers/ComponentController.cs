@@ -34,12 +34,12 @@ namespace SitecoreContentEditorTabs.Controllers
 
             var db = Sitecore.Data.Database.GetDatabase(database);
             var item = db.GetItem(id);
-            if (item == null || item.Fields["__renderings"] == null || string.IsNullOrEmpty(item.Fields["__renderings"].Value))
+            if (item == null || item.Fields[Enums.FieldNames.Renderings] == null || string.IsNullOrEmpty(item.Fields[Enums.FieldNames.Renderings].Value))
                 return null;
 
             var renderingsReader = Container.GetInstance<IRenderingsReader>();
 
-            return renderingsReader.GetComponents(item);
+            return renderingsReader.GetComponents(item).ToList();
         }
     }
 }
