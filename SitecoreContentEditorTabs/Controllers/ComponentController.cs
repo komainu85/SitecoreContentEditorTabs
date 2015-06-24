@@ -7,18 +7,18 @@ using Sitecore.Diagnostics;
 using Sitecore.Layouts;
 using Sitecore.Services.Core;
 using Sitecore.Services.Infrastructure.Sitecore.Services;
+using Sitecore.Services.Infrastructure.Web.Http;
 using SitecoreContentEditorTabs.DataAccess;
 using SitecoreContentEditorTabs.Interfaces;
 using SitecoreContentEditorTabs.IoC;
 using SitecoreContentEditorTabs.Mappers;
 using SitecoreContentEditorTabs.Models;
-using SitecoreContentEditorTabs.Repositories;
 using StructureMap;
 
 namespace SitecoreContentEditorTabs.Controllers
 {
     [ServicesController]
-    public class ComponentController : EntityService<Component>
+    public class ComponentController : ServicesApiController
     {
         public static Container Container
         {
@@ -26,16 +26,6 @@ namespace SitecoreContentEditorTabs.Controllers
             {
                 return new Container(new Registry());
             }
-        }
-
-        public ComponentController(IRepository<Component> repository)
-                    : base(repository)
-        {
-        }
-
-        public ComponentController()
-            : this(Container.GetInstance<IRepository<Component>>())
-        {
         }
 
         public List<Component> GetComponents(string id, string database)
