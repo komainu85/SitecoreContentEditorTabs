@@ -25,5 +25,6 @@ namespace SitecoreContentEditorTabs.Models
 
         public bool StandardValue { get; set; }
 
+        public bool DatasourceIsStandardValue { get; set; }
     }
 }

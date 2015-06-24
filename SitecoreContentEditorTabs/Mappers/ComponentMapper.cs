@@ -14,10 +14,10 @@ namespace SitecoreContentEditorTabs.Mappers
     {
         public Component MapToComponent(RenderingReference renderingReference, Item datasource, Item device)
         {
-            return MapToComponent(renderingReference, datasource, null, device);
+            return MapToComponent(renderingReference, datasource, null, null, device);
         }
 
-        public Component MapToComponent(RenderingReference renderingReference, Item datasource, bool? standardValueRendering,
+        public Component MapToComponent(RenderingReference renderingReference, Item datasource, bool? standardValueRendering, bool? standardValueDatasource,
             Item device)
         {
             var component = new Models.Component()
@@ -35,6 +35,7 @@ namespace SitecoreContentEditorTabs.Mappers
                 component.DatasourceId = datasource.ID.ToGuid();
                 component.DatasourceLink = datasource.Paths.FullPath;
                 component.DatasourceName = datasource.Name;
+                component.DatasourceIsStandardValue = standardValueDatasource.HasValue && standardValueDatasource.Value;
             }
 
             return component;

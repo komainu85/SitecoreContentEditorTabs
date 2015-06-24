@@ -56,9 +56,11 @@ namespace SitecoreContentEditorTabs.DataAccess
                 components.AddRange((from reference in references
                                      let datasource = item.Database.GetItem(reference.Settings.DataSource)
                                      let standardRendering = standardValueComponents
-                                                             .Where(b => String.Equals(b.Device.Trim().ToLower(), device.DisplayName.Trim().ToLower(), StringComparison.InvariantCultureIgnoreCase))
-                                                             .Select(c => c.Id).Contains(reference.UniqueId)
-                                     select _iComponentMapper.MapToComponent(reference, datasource, standardRendering, device)).OrderBy(x => x.Device).ToList());
+                                                            .FirstOrDefault(c => 
+                                                                String.Equals(c.Device.Trim().ToLower(), device.DisplayName.Trim().ToLower(), StringComparison.InvariantCultureIgnoreCase)
+                                                                && String.Equals(c.Id.Trim().ToLower(), reference.UniqueId.Trim().ToLower(), StringComparison.InvariantCultureIgnoreCase))
+                                     let standardDatasource = (standardRendering != null && standardRendering.DatasourceId == datasource.ID.ToGuid()) ? true : false
+                                     select _iComponentMapper.MapToComponent(reference, datasource, standardRendering != null, standardDatasource, device)).OrderBy(x => x.Device).ToList());
             }
 
             return components;
