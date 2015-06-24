@@ -12,6 +12,7 @@ namespace SitecoreContentEditorTabs.IoC
             For<Interfaces.IComponentMapper>().Use<ComponentMapper>();
             For<Interfaces.IRenderingsReader>().Use<RenderingsReader>();
             For(typeof(IRepository<Component>)).Use(typeof(SitecoreContentEditorTabs.Repositories.ComponentRespository));
+            For<Interfaces.IDeviceReader>().Use<DeviceReader>();
         }
 
 

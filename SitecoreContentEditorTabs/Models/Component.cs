@@ -21,5 +21,7 @@ namespace SitecoreContentEditorTabs.Models
 
         public bool IsPersonalised { get; set; }
 
+        public string Device { get; set; }
+
     }
 }
