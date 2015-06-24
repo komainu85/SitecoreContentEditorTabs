@@ -49,7 +49,7 @@ namespace SitecoreContentEditorTabs.Controllers
 
             var renderingsReader = Container.GetInstance<IRenderingsReader>();
 
-            return renderingsReader.GetComponents(item, db);
+            return renderingsReader.GetComponents(item);
         }
     }
 }

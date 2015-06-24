@@ -2,6 +2,7 @@
 using System.Linq;
 using Sitecore.Data;
 using Sitecore.Data.Items;
+using Sitecore.Diagnostics;
 using Sitecore.Layouts;
 using Sitecore.Web.UI.HtmlControls;
 using SitecoreContentEditorTabs.Interfaces;
@@ -19,8 +20,10 @@ namespace SitecoreContentEditorTabs.DataAccess
             _iDeviceReader = iDeviceReader;
         }
 
-        public List<Models.Component> GetComponents(Item item, Database database)
+        public List<Models.Component> GetComponents(Item item)
         {
+            Assert.IsNotNull(item, "item");
+
             var components = new List<Models.Component>();
 
             var layoutField = (Sitecore.Data.Fields.LayoutField)item.Fields["__renderings"];
