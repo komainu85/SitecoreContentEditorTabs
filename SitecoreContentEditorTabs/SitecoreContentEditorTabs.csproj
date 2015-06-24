@@ -119,6 +119,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ComponentController.cs" />
     <Compile Include="DataAccess\DeviceReader.cs" />
+    <Compile Include="Enums\FieldNames.cs" />
     <Compile Include="Interfaces\IDeviceReader.cs" />
     <Compile Include="Interfaces\IRenderingsReader.cs" />
     <Compile Include="DataAccess\RenderingsReader.cs" />

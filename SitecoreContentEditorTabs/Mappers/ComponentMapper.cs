@@ -14,13 +14,20 @@ namespace SitecoreContentEditorTabs.Mappers
     {
         public Component MapToComponent(RenderingReference renderingReference, Item datasource, Item device)
         {
+            return MapToComponent(renderingReference, datasource, null, device);
+        }
+
+        public Component MapToComponent(RenderingReference renderingReference, Item datasource, bool? standardValueRendering,
+            Item device)
+        {
             var component = new Models.Component()
             {
                 Id = renderingReference.UniqueId,
                 ComponentName = renderingReference.RenderingItem.Name,
                 Placeholder = renderingReference.Placeholder,
-                IsPersonalised = renderingReference.Settings.Rules.Count> 0,
-                Device = device.DisplayName
+                IsPersonalised = renderingReference.Settings.Rules.Count > 0,
+                Device = device.DisplayName,
+                StandardValue = standardValueRendering.HasValue && standardValueRendering.Value
             };
 
             if (datasource != null)
@@ -32,6 +39,5 @@ namespace SitecoreContentEditorTabs.Mappers
 
             return component;
         }
-
     }
 }
