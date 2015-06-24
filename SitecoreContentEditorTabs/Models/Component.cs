@@ -23,7 +23,5 @@ namespace SitecoreContentEditorTabs.Models
 
         public string Device { get; set; }
 
-        public bool StandardValue { get; set; }
-
     }
 }

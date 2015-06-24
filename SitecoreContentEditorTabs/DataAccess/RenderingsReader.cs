@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Sitecore.Data;
 using Sitecore.Data.Items;
@@ -7,7 +6,6 @@ using Sitecore.Diagnostics;
 using Sitecore.Layouts;
 using Sitecore.Web.UI.HtmlControls;
 using SitecoreContentEditorTabs.Interfaces;
-using Component = SitecoreContentEditorTabs.Models.Component;
 
 namespace SitecoreContentEditorTabs.DataAccess
 {
@@ -22,43 +20,24 @@ namespace SitecoreContentEditorTabs.DataAccess
             _iDeviceReader = iDeviceReader;
         }
 
-        public IEnumerable<Component> GetStandardValueComponents(Item item)
-        {
-            Assert.IsNotNull(item, "item");
-
-            IEnumerable<Component> standardValueComponents = new List<Component>();
-
-            var itemStandardValues = item.Template.StandardValues;
-
-            if (itemStandardValues != null && String.Equals(Sitecore.Configuration.Settings.DefaultBaseTemplate.Trim().ToLower(),
-                    item.TemplateID.ToString().ToLower().Trim(), StringComparison.InvariantCultureIgnoreCase))
-                standardValueComponents = GetComponents(itemStandardValues);
-
-            return standardValueComponents;
-        }
-
-        public IEnumerable<Models.Component> GetComponents(Item item)
+        public List<Models.Component> GetComponents(Item item)
         {
             Assert.IsNotNull(item, "item");
 
             var components = new List<Models.Component>();
 
-            var layoutField = (Sitecore.Data.Fields.LayoutField)item.Fields[Enums.FieldNames.Renderings];
+            var layoutField = (Sitecore.Data.Fields.LayoutField)item.Fields["__renderings"];
 
             var devices = _iDeviceReader.GetAllDeviceItems(item);
-
-            var standardValueComponents = GetStandardValueComponents(item);
 
             foreach (var device in devices)
             {
                 var references = layoutField.GetReferences(new DeviceItem(device));
 
                 components.AddRange((from reference in references
+                                     let renderingItem = reference.RenderingItem
                                      let datasource = item.Database.GetItem(reference.Settings.DataSource)
-                                     let standardRendering = standardValueComponents
-                                                             .Where(b => String.Equals(b.Device.Trim().ToLower(), device.DisplayName.Trim().ToLower(), StringComparison.InvariantCultureIgnoreCase))
-                                                             .Select(c => c.Id).Contains(reference.UniqueId)
-                                     select _iComponentMapper.MapToComponent(reference, datasource, standardRendering, device)).OrderBy(x=> x.Device).ToList());
+                                     select _iComponentMapper.MapToComponent(reference, datasource, device)).OrderBy(x=> x.Device).ToList());
             }
 
             return components;
