@@ -12,14 +12,15 @@ namespace SitecoreContentEditorTabs.Mappers
 {
     public class ComponentMapper : IComponentMapper
     {
-        public Component MapToComponent(RenderingReference renderingReference, Item datasource)
+        public Component MapToComponent(RenderingReference renderingReference, Item datasource, Item device)
         {
             var component = new Models.Component()
             {
                 Id = renderingReference.UniqueId,
                 ComponentName = renderingReference.RenderingItem.Name,
                 Placeholder = renderingReference.Placeholder,
-                IsPersonalised = renderingReference.Settings.Rules.Count> 0
+                IsPersonalised = renderingReference.Settings.Rules.Count> 0,
+                Device = device.DisplayName
             };
 
             if (datasource != null)

@@ -6,6 +6,6 @@ namespace SitecoreContentEditorTabs.Interfaces
 {
     public interface IComponentMapper
     {
-        Component MapToComponent(RenderingReference renderingReference, Item datasource);
+        Component MapToComponent(RenderingReference renderingReference, Item datasource, Item device);
     }
 }

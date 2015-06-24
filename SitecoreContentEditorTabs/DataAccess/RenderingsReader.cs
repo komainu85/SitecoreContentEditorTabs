@@ -13,8 +13,6 @@ namespace SitecoreContentEditorTabs.DataAccess
         private IComponentMapper _iComponentMapper;
         private IDeviceReader _iDeviceReader;
 
-        private string DefaultDevice = "{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}";
-
         public RenderingsReader(IComponentMapper iComponentMapper, IDeviceReader iDeviceReader)
         {
             _iComponentMapper = iComponentMapper;
@@ -29,12 +27,14 @@ namespace SitecoreContentEditorTabs.DataAccess
 
             var devices = _iDeviceReader.GetAllDeviceItems(item);
 
-            foreach (var references in devices.Select(device => layoutField.GetReferences(new DeviceItem(device))))
+            foreach (var device in devices)
             {
+                var references = layoutField.GetReferences(new DeviceItem(device));
+
                 components.AddRange((from reference in references
                                      let renderingItem = reference.RenderingItem
                                      let datasource = database.GetItem(reference.Settings.DataSource)
-                                     select _iComponentMapper.MapToComponent(reference, datasource)).ToList());
+                                     select _iComponentMapper.MapToComponent(reference, datasource, device)).OrderBy(x=> x.Device).ToList());
             }
 
             return components;
