@@ -113,7 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\xDatasourceContentEditorTabs.xml" />
+    <None Include="App_Config\Include\xDatasourceContentEditorTabs.config" />
     <Content Include="SitecoreContentEditorTabs.js" />
     <Content Include="packages.config" />
   </ItemGroup>
