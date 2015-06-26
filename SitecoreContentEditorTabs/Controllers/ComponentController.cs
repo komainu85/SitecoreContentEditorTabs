@@ -32,7 +32,7 @@ namespace Robbins.SitecoreContentEditorTabs.Controllers
 
             var item = db.GetItem(id);
 
-            Contract.Assume(item!=null, "Invalid ID, item doesn't exist");
+           Contract.Assume(item!=null, "Invalid ID, item doesn't exist");
 
             if (item.Fields[Sitecore.FieldIDs.LayoutField] == null || string.IsNullOrEmpty(item.Fields[Sitecore.FieldIDs.LayoutField].Value))
                 return null;

@@ -25,7 +25,7 @@ namespace Robbins.SitecoreContentEditorTabs.DataAccess
 
             var components = new List<Models.Component>();
 
-            var layoutField = (Sitecore.Data.Fields.LayoutField)item.Fields["__renderings"];
+            var layoutField = (Sitecore.Data.Fields.LayoutField)item.Fields[Sitecore.FieldIDs.FinalLayoutField];
 
             var devices = _iDeviceReader.GetAllDeviceItems(item);
 
