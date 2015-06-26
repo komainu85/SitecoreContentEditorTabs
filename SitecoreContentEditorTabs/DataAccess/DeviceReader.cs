@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Sitecore.Data;
+using Robbins.SitecoreContentEditorTabs.Interfaces;
 using Sitecore.Data.Items;
 using Sitecore.Layouts;
-using SitecoreContentEditorTabs.Interfaces;
 
-namespace SitecoreContentEditorTabs.DataAccess
+namespace Robbins.SitecoreContentEditorTabs.DataAccess
 {
     public class DeviceReader : IDeviceReader
     {

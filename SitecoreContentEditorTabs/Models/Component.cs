@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SitecoreContentEditorTabs.Models
+namespace Robbins.SitecoreContentEditorTabs.Models
 {
     public class Component : Sitecore.Services.Core.Model.EntityIdentity
     {
@@ -22,9 +22,5 @@ namespace SitecoreContentEditorTabs.Models
         public bool IsPersonalised { get; set; }
 
         public string Device { get; set; }
-
-        public bool StandardValue { get; set; }
-
-        public bool DatasourceIsStandardValue { get; set; }
     }
 }

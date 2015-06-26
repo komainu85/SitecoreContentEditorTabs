@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
-using Sitecore.Data.Fields;
-using Sitecore.Data.Items;
+using Robbins.SitecoreContentEditorTabs.Interfaces;
+using Robbins.SitecoreContentEditorTabs.IoC;
+using Robbins.SitecoreContentEditorTabs.Models;
 using Sitecore.Diagnostics;
-using Sitecore.Layouts;
 using Sitecore.Services.Core;
-using Sitecore.Services.Infrastructure.Sitecore.Services;
 using Sitecore.Services.Infrastructure.Web.Http;
-using SitecoreContentEditorTabs.DataAccess;
-using SitecoreContentEditorTabs.Interfaces;
-using SitecoreContentEditorTabs.IoC;
-using SitecoreContentEditorTabs.Mappers;
-using SitecoreContentEditorTabs.Models;
 using StructureMap;
 
-namespace SitecoreContentEditorTabs.Controllers
+namespace Robbins.SitecoreContentEditorTabs.Controllers
 {
     [ServicesController]
     public class ComponentController : ServicesApiController
@@ -30,11 +24,17 @@ namespace SitecoreContentEditorTabs.Controllers
 
         public List<Component> GetComponents(string id, string database)
         {
-            Assert.IsNotNullOrEmpty(id, "itemId");
+            Contract.Assert(!string.IsNullOrEmpty(id), "id is required");
 
             var db = Sitecore.Data.Database.GetDatabase(database);
+
+            Contract.Assume(db != null, "Invalid database");
+
             var item = db.GetItem(id);
-            if (item == null || item.Fields[Enums.FieldNames.Renderings] == null || string.IsNullOrEmpty(item.Fields[Enums.FieldNames.Renderings].Value))
+
+            Contract.Assume(item!=null, "Invalid ID, item doesn't exist");
+
+            if (item.Fields[Sitecore.FieldIDs.LayoutField] == null || string.IsNullOrEmpty(item.Fields[Sitecore.FieldIDs.LayoutField].Value))
                 return null;
 
             var renderingsReader = Container.GetInstance<IRenderingsReader>();

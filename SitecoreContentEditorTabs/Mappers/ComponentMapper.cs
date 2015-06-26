@@ -3,22 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Robbins.SitecoreContentEditorTabs.Interfaces;
+using Robbins.SitecoreContentEditorTabs.Models;
 using Sitecore.Data.Items;
 using Sitecore.Layouts;
-using SitecoreContentEditorTabs.Interfaces;
-using SitecoreContentEditorTabs.Models;
 
-namespace SitecoreContentEditorTabs.Mappers
+
+namespace Robbins.SitecoreContentEditorTabs.Mappers
 {
     public class ComponentMapper : IComponentMapper
     {
         public Component MapToComponent(RenderingReference renderingReference, Item datasource, Item device)
-        {
-            return MapToComponent(renderingReference, datasource, null, null, device);
-        }
-
-        public Component MapToComponent(RenderingReference renderingReference, Item datasource, bool? standardValueRendering, bool? standardValueDatasource,
-            Item device)
         {
             var component = new Models.Component()
             {
@@ -26,8 +21,7 @@ namespace SitecoreContentEditorTabs.Mappers
                 ComponentName = renderingReference.RenderingItem.Name,
                 Placeholder = renderingReference.Placeholder,
                 IsPersonalised = renderingReference.Settings.Rules.Count > 0,
-                Device = device.DisplayName,
-                StandardValue = standardValueRendering.HasValue && standardValueRendering.Value
+                Device = device.DisplayName
             };
 
             if (datasource != null)
@@ -35,10 +29,10 @@ namespace SitecoreContentEditorTabs.Mappers
                 component.DatasourceId = datasource.ID.ToGuid();
                 component.DatasourceLink = datasource.Paths.FullPath;
                 component.DatasourceName = datasource.Name;
-                component.DatasourceIsStandardValue = standardValueDatasource.HasValue && standardValueDatasource.Value;
             }
 
             return component;
         }
+
     }
 }

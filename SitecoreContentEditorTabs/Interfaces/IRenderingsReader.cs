@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using Sitecore.Data;
+using Robbins.SitecoreContentEditorTabs.Models;
 using Sitecore.Data.Items;
-using SitecoreContentEditorTabs.Models;
 
-namespace SitecoreContentEditorTabs.Interfaces
+namespace Robbins.SitecoreContentEditorTabs.Interfaces
 {
     public interface IRenderingsReader
     {
         IEnumerable<Component> GetComponents(Item item);
-        IEnumerable<Component> GetStandardValueComponents(Item item);
     }
 }

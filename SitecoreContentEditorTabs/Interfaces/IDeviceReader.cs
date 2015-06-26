@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Layouts;
 
-namespace SitecoreContentEditorTabs.Interfaces
+namespace Robbins.SitecoreContentEditorTabs.Interfaces
 {
     public interface IDeviceReader
     {

@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SitecoreContentEditorTabs</RootNamespace>
-    <AssemblyName>SitecoreContentEditorTabs</AssemblyName>
+    <RootNamespace>Robbins.SitecoreContentEditorTabs</RootNamespace>
+    <AssemblyName>Robbins.SitecoreContentEditorTabs</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -119,7 +119,6 @@
   <ItemGroup>
     <Compile Include="Controllers\ComponentController.cs" />
     <Compile Include="DataAccess\DeviceReader.cs" />
-    <Compile Include="Enums\FieldNames.cs" />
     <Compile Include="Interfaces\IDeviceReader.cs" />
     <Compile Include="Interfaces\IRenderingsReader.cs" />
     <Compile Include="DataAccess\RenderingsReader.cs" />
@@ -154,6 +153,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Q /Y "$(TargetDir)$(TargetName).*" "C:\inetpub\wwwroot\MikeRobbins8u2\website\bin\"
+xcopy /Q /Y "$(ProjectDir)*.js" "C:\inetpub\wwwroot\MikeRobbins8u2\website\sitecore\shell\client\Robbins\Tabs\SitecoreContentEditorTabs\"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

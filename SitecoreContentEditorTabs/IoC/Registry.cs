@@ -1,9 +1,7 @@
-﻿using Sitecore.Services.Core;
-using SitecoreContentEditorTabs.DataAccess;
-using SitecoreContentEditorTabs.Mappers;
-using SitecoreContentEditorTabs.Models;
+﻿using Robbins.SitecoreContentEditorTabs.DataAccess;
+using Robbins.SitecoreContentEditorTabs.Mappers;
 
-namespace SitecoreContentEditorTabs.IoC
+namespace Robbins.SitecoreContentEditorTabs.IoC
 {
     public class Registry : StructureMap.Configuration.DSL.Registry
     {
