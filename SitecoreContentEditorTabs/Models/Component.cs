@@ -22,5 +22,7 @@ namespace Robbins.SitecoreContentEditorTabs.Models
         public bool IsPersonalised { get; set; }
 
         public string Device { get; set; }
+
+        public string Language { get; set; }
     }
 }

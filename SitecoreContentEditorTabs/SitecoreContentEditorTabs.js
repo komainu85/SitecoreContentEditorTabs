@@ -16,7 +16,7 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
             var datasource = this.DataSource;
 
             $.ajax({
-                url: "/sitecore/api/ssc/Robbins-SitecoreContentEditorTabs-Controllers/Component/" + this.GetQueryStringParameter("id") + "/GetComponents?database=" + this.GetQueryStringParameter("database"),
+                url: "/sitecore/api/ssc/Robbins-SitecoreContentEditorTabs-Controllers/Component/" + this.GetQueryStringParameter("id") + "/GetComponents?database=" + this.GetQueryStringParameter("database") + "&language=" + this.GetQueryStringParameter("language"),
                 type: "GET",
                 contentType: 'application/json',
                 context: this,

@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Robbins.SitecoreContentEditorTabs", "SitecoreContentEditorTabs\Robbins.SitecoreContentEditorTabs.csproj", "{11DC80BF-6733-4853-BF8B-D2CFC5CAD5DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serialisation", "Serialisation", "{D9C984A7-87CA-47B2-8344-308E95A64815}"
+	ProjectSection(SolutionItems) = preProject
+		serialization.zip = serialization.zip
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

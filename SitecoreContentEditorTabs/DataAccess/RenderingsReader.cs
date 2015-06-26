@@ -35,7 +35,7 @@ namespace Robbins.SitecoreContentEditorTabs.DataAccess
 
                 components.AddRange((from reference in references
                                      let renderingItem = reference.RenderingItem
-                                     let datasource = item.Database.GetItem(reference.Settings.DataSource)
+                                     let datasource = item.Database.GetItem(reference.Settings.DataSource, item.Language)
                                      select _iComponentMapper.MapToComponent(reference, datasource, device)).OrderBy(x => x.Device).ToList());
             }
 

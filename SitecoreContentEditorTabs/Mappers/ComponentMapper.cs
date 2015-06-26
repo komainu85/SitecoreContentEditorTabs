@@ -21,7 +21,8 @@ namespace Robbins.SitecoreContentEditorTabs.Mappers
                 ComponentName = renderingReference.RenderingItem.Name,
                 Placeholder = renderingReference.Placeholder,
                 IsPersonalised = renderingReference.Settings.Rules.Count > 0,
-                Device = device.DisplayName
+                Device = device.DisplayName,
+                DatasourceName = ""
             };
 
             if (datasource != null)
@@ -29,6 +30,7 @@ namespace Robbins.SitecoreContentEditorTabs.Mappers
                 component.DatasourceId = datasource.ID.ToGuid();
                 component.DatasourceLink = datasource.Paths.FullPath;
                 component.DatasourceName = datasource.Name;
+                component.Language = datasource.Language.Name;
             }
 
             return component;
