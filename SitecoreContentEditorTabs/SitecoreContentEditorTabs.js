@@ -1,13 +1,5 @@
-﻿require.config({
-    paths: {
-        entityService: "/sitecore/shell/client/Services/Assets/lib/entityservice"
-    }
-});
-
-define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore, $, _, entityService) {
-    var SitecoreContentEditorTabs = Sitecore.Definitions.App.extend({
-
-        initialized: function () {
+﻿(function(Speak) {
+    Speak.pageCode({        initialized: function () {
             parent.scContent.onEditorTabClick(this, null, "Content");
             this.GetComponents();
         },
@@ -31,8 +23,5 @@ define(["sitecore", "jquery", "underscore", "entityService"], function (Sitecore
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
                 results = regex.exec(location.search);
             return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
-    });
-
-    return SitecoreContentEditorTabs;
-});
+        }    });
+})(Sitecore.Speak);
