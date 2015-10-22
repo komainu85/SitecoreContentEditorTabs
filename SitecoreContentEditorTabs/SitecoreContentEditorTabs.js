@@ -13,7 +13,7 @@
                 contentType: 'application/json',
                 context: this,
                 success: function (data) {
-                    datasource.viewModel.items(data);
+                    datasource.Items = data;
                 }
             });
         },
