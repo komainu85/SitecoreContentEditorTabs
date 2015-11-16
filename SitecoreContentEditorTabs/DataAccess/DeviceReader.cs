@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Robbins.SitecoreContentEditorTabs.Interfaces;
+using Robbins.SitecoreContentEditorTabs.Contracts;
 using Sitecore.Data.Items;
 using Sitecore.Layouts;
 

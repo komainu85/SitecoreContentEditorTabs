@@ -1,4 +1,5 @@
-﻿using Robbins.SitecoreContentEditorTabs.DataAccess;
+﻿using Robbins.SitecoreContentEditorTabs.Contracts;
+using Robbins.SitecoreContentEditorTabs.DataAccess;
 using Robbins.SitecoreContentEditorTabs.Mappers;
 
 namespace Robbins.SitecoreContentEditorTabs.IoC
@@ -7,9 +8,9 @@ namespace Robbins.SitecoreContentEditorTabs.IoC
     {
         public Registry()
         {
-            For<Interfaces.IComponentMapper>().Use<ComponentMapper>();
-            For<Interfaces.IRenderingsReader>().Use<RenderingsReader>();
-            For<Interfaces.IDeviceReader>().Use<DeviceReader>();
+            For<IComponentMapper>().Use<ComponentMapper>();
+            For<IRenderingsReader>().Use<RenderingsReader>();
+            For<IDeviceReader>().Use<DeviceReader>();
         }
 
 

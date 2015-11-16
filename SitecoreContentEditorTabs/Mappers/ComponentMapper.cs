@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Robbins.SitecoreContentEditorTabs.Interfaces;
+using Robbins.SitecoreContentEditorTabs.Contracts;
 using Robbins.SitecoreContentEditorTabs.Models;
 using Sitecore.Data.Items;
 using Sitecore.Layouts;

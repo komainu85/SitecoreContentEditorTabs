@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using Robbins.SitecoreContentEditorTabs.Models;
-using Sitecore.Data.Items;
 
-namespace Robbins.SitecoreContentEditorTabs.Interfaces
+namespace Robbins.SitecoreContentEditorTabs.Contracts
 {
     public interface IRenderingsReader
     {

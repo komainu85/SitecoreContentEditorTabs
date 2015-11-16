@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using Robbins.SitecoreContentEditorTabs.Interfaces;
+using Robbins.SitecoreContentEditorTabs.Contracts;
 using Robbins.SitecoreContentEditorTabs.IoC;
 using Robbins.SitecoreContentEditorTabs.Models;
 using Sitecore.Data.Managers;

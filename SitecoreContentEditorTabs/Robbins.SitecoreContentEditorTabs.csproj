@@ -116,30 +116,21 @@
     <None Include="App_Config\Include\xDatasourceContentEditorTabs.config" />
     <Content Include="SitecoreContentEditorTabs.js" />
     <Content Include="packages.config" />
-    <Content Include="serialization\core\sitecore\client\Robbins.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs\AdvancedUserTab.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs\AdvancedUserTab\PageSettings.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs\AdvancedUserTab\PageSettings\Datasources.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs\AdvancedUserTab\PageSettings\Datasources\Component Name.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs\AdvancedUserTab\PageSettings\Datasources\Datasource.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs\AdvancedUserTab\PageSettings\Datasources\Device.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs\AdvancedUserTab\PageSettings\Datasources\Personalised.item" />
-    <Content Include="serialization\core\sitecore\client\Robbins\Tabs\AdvancedUserTab\PageSettings\Datasources\Placeholder.item" />
-    <Content Include="serialization\core\sitecore\content\Applications\Content Editor\Editors\Robbins.item" />
-    <Content Include="serialization\core\sitecore\content\Applications\Content Editor\Editors\Robbins\Components.item" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ComponentController.cs" />
     <Compile Include="DataAccess\DeviceReader.cs" />
-    <Compile Include="Interfaces\IDeviceReader.cs" />
-    <Compile Include="Interfaces\IRenderingsReader.cs" />
+    <Compile Include="Contracts\IDeviceReader.cs" />
+    <Compile Include="Contracts\IRenderingsReader.cs" />
     <Compile Include="DataAccess\RenderingsReader.cs" />
     <Compile Include="IoC\Registry.cs" />
     <Compile Include="Mappers\ComponentMapper.cs" />
-    <Compile Include="Interfaces\IComponentMapper.cs" />
+    <Compile Include="Contracts\IComponentMapper.cs" />
     <Compile Include="Models\Component.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="serialization\core\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

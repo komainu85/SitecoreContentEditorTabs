@@ -13,13 +13,13 @@ templatekey: ColumnFieldTemplate
 field: {DA2DD014-0065-43AA-A125-537A38AABFB9}
 name: HtmlTemplate
 key: htmltemplate
-content-length: 178
+content-length: 244
 
-<a href="#" onclick="parent.scForm.postRequest(\'\', \'\', \'\', \'contenteditor:launchtab(url={{DatasourceId}}, la={{Language}}, datasource=sitecore)\') ">{{DatasourceName}}</a>
+<a href="#" onclick="parent.scForm.browser.clearEvent(event || window.event, true); parent.scForm.postRequest('','','','contenteditor:launchtab(url={{DatasourceId}}, la={{Language}}, datasource=sitecore)'); return false;">{{DatasourceName}}</a>
 ----version----
 language: en
 version: 1
-revision: 56c1426e-cb8b-4300-b4fe-e122f3adad65
+revision: 9b15e532-e792-470e-ba76-25ccf113f131
 
 ----field----
 field: {5869A226-DFB2-4676-8754-1CD7D22B23ED}
@@ -55,14 +55,14 @@ name: __Revision
 key: __revision
 content-length: 36
 
-56c1426e-cb8b-4300-b4fe-e122f3adad65
+9b15e532-e792-470e-ba76-25ccf113f131
 ----field----
 field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
 name: __Updated
 key: __updated
 content-length: 16
 
-20151022T114033Z
+20151116T133030Z
 ----field----
 field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
 name: __Updated by
